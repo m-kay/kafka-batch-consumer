@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          consumer-properties:
+            key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            max.poll.records: 10
+      bindings:
+        sink-in-0:
+          group: sink-consumer
+          consumer:
+            batchMode: true
+            startOffset: earliest
+          destination: input-topic
